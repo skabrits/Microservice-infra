@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: longhorn
+  name: system
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -15,11 +15,11 @@ spec:
       allowEmpty: true
   project: default
   source:
-    chart: longhorn
-    repoURL: https://charts.longhorn.io
-    targetRevision: "*"
-    helm:
-      releaseName: longhorn
+    path: "./"
+    repoURL: https://github.com/skabrits/Microservice-sys.git
+    targetRevision: "main"
+    directory:
+      recurse: true
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: longhorn-system
+    namespace: "argocd"
