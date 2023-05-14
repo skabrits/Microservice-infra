@@ -27,7 +27,7 @@ Vagrant.configure("2") do |config|
 
     master.vm.provider "virtualbox" do |v|
       v.name = "master-01"
-      v.memory = 4096
+      v.memory = 6144
       v.cpus = 2
     end
   end
@@ -40,7 +40,7 @@ Vagrant.configure("2") do |config|
       worker.vm.provision "shell", path: "scripts/worker.sh"
 	worker.vm.provider "virtualbox" do |v|
         v.name = "worker-0#{i}"
-        v.memory = 4096
+        v.memory = 8192
         v.cpus = 2
     	end
     end
